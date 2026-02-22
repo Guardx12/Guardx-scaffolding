@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 function LogoGoogle({ size = 18 }) {
-  // Simple "G" mark approximation in Google colors (not an official logo file)
   return (
     <svg width={size} height={size} viewBox="0 0 256 262" aria-hidden="true">
       <path fill="#4285F4" d="M255.9 133.5c0-11.4-1-19.7-3.2-28.3H130.5v53.6h71.7c-1.4 11.9-9.1 29.8-26.2 41.8l-.2 1.8 38.6 29.9 2.7.3c24.8-22.9 39.1-56.6 39.1-99.1z"/>
@@ -47,7 +46,6 @@ function LogoTrustpilot({ size = 18 }) {
 }
 
 function LogoCheckatrade({ size = 18 }) {
-  // Simple check mark + blocks in Checkatrade colors (approx)
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
       <rect x="1" y="1" width="22" height="22" rx="5" fill="#FFD200"/>
@@ -69,6 +67,17 @@ function StarRow({ count = 5 }) {
 }
 
 export default function Home() {
+  const gallery = [
+    { src: "/images/scaffold-house-renovation-1.jpg", tag: "Domestic elevation" },
+    { src: "/images/scaffold-brick-house-2.jpg", tag: "Full wrap" },
+    { src: "/images/scaffold-workers-installing-3.jpg", tag: "On-structure build" },
+    { src: "/images/scaffold-commercial-building-4.jpg", tag: "Multi-storey" },
+    { src: "/images/scaffold-large-project-5.jpg", tag: "Commercial frame" },
+    { src: "/images/scaffold-terrace-row-6.jpg", tag: "Terrace access" },
+    { src: "/images/scaffold-worker-detail-7.jpg", tag: "Detail & fittings" },
+    { src: "/images/scaffold-safety-netting-8.jpg", tag: "Safety netting" },
+  ];
+
   return (
     <>
       <Head>
@@ -80,7 +89,7 @@ export default function Home() {
       </Head>
 
       <div className="page">
-        {/* Top bar */}
+        {/* Sticky header */}
         <header className="topbar">
           <div className="container topbarInner">
             <div className="brand">
@@ -106,22 +115,22 @@ export default function Home() {
           </div>
         </header>
 
-        {/* Hero */}
+        {/* HERO (full image with copy over the top) */}
         <section className="hero">
-          <div className="heroBg" role="img" aria-label="Scaffolding around a house" />
+          <div className="heroBg" role="img" aria-label="Scaffolding install" />
           <div className="heroOverlay" />
           <div className="container heroInner">
             <div className="heroCard">
-              <div className="pill">Safety-first scaffolding • Fast turnaround</div>
-              <h1>Access you can trust — installed tidy, built solid.</h1>
+              <div className="pill">Safety-first • Tidy installs • Fast quotes</div>
+              <h1>Scaffolding that looks professional — and is built properly.</h1>
               <p>
-                Domestic & commercial scaffolding for roofing, rendering, chimneys and renovations.
-                Clear quotes, reliable dates, and a crew that treats your property properly.
+                Big, clear images. Straightforward pricing. A crew that turns up, keeps access clear,
+                and leaves your site tidy.
               </p>
 
               <div className="heroCtas">
-                <a className="btn btnPrimary" href="#contact">Request a quote</a>
-                <a className="btn btnGhost" href="#work">See recent installs</a>
+                <a className="btn btnPrimary" href="#contact">Get a quote</a>
+                <a className="btn btnGhost" href="#work">See installs</a>
               </div>
 
               <div className="trustRow" aria-label="Trust logos">
@@ -129,95 +138,131 @@ export default function Home() {
                 <span className="trustPill"><LogoFacebook /> <b>4.8</b> <small>Facebook</small></span>
                 <span className="trustPill"><LogoTrustpilot /> <b>4.7</b> <small>Trustpilot</small></span>
                 <span className="trustPill"><LogoCheckatrade /> <b>9.8</b> <small>Checkatrade</small></span>
-                <span className="trustPill"><LogoInstagram /> <small>Photos</small></span>
+                <span className="trustPill"><LogoInstagram /> <small>Instagram</small></span>
               </div>
 
               <div className="heroBadges">
                 <span className="badge">Fully insured</span>
-                <span className="badge">RAMS provided</span>
-                <span className="badge">Safety netting & edge protection</span>
-                <span className="badge">Tidy site, clear walkways</span>
+                <span className="badge">RAMS & handover paperwork</span>
+                <span className="badge">Netting & edge protection</span>
+                <span className="badge">Inspections where required</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Image heavy gallery */}
-        <section id="work" className="section">
+        {/* IMAGE BANDS (big images + text over images) */}
+        <section className="bands" aria-label="Image-led service highlights">
+          <div className="band" style={{ "--bg": "url(/images/scaffold-terrace-row-6.jpg)" }}>
+            <div className="bandOverlay" />
+            <div className="container bandInner">
+              <div className="bandCard">
+                <div className="kicker">Domestic</div>
+                <h2>Roofing, chimneys & rendering — tidy scaffolds that keep access open.</h2>
+                <p>Ideal for roofers, renderers, painters and solar. Fast install, tidy removal.</p>
+                <div className="bandCtas">
+                  <a className="btn btnPrimary" href="#contact">Request a quote</a>
+                  <a className="btn btnGhost" href="#work">View photos</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="band" style={{ "--bg": "url(/images/scaffold-large-project-5.jpg)" }}>
+            <div className="bandOverlay" />
+            <div className="container bandInner right">
+              <div className="bandCard">
+                <div className="kicker">Commercial</div>
+                <h2>Multi-storey frames, phased builds and proper planning.</h2>
+                <p>Coordination, safe access routes, and protection for pedestrians and neighbours.</p>
+                <div className="bandCtas">
+                  <a className="btn btnPrimary" href="#contact">Book a site visit</a>
+                  <a className="btn btnGhost" href="#trust">Compliance</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="band" style={{ "--bg": "url(/images/scaffold-safety-netting-8.jpg)" }}>
+            <div className="bandOverlay" />
+            <div className="container bandInner">
+              <div className="bandCard">
+                <div className="kicker">Safety</div>
+                <h2>Netting, edge protection, signage — the job looks serious.</h2>
+                <p>Paperwork handled: RAMS, handover, inspections where required.</p>
+                <div className="bandCtas">
+                  <a className="btn btnPrimary" href="#contact">Get pricing</a>
+                  <a className="btn btnGhost" href="#reviews">Reviews</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* BIG IMAGE GRID (huge tiles with overlay text) */}
+        <section id="work" className="section workSection">
           <div className="container">
             <div className="sectionHead">
               <div>
-                <div className="kicker">Recent work</div>
-                <h2>Clean lines. Strong builds. Proper access.</h2>
+                <div className="kicker">Recent installs</div>
+                <h2>Big images. Writing over the top. That’s the vibe.</h2>
               </div>
-              <p className="sub">
-                A snapshot of installs: residential elevations, safety netting, larger commercial frames and on-structure work.
-              </p>
+              <p className="sub">Everything below is full-bleed and designed to feel premium and visual.</p>
             </div>
+          </div>
 
-            <div className="masonry" aria-label="Project gallery">
-              {[
-                { src: "/images/scaffold-house-renovation-1.jpg", tag: "Domestic elevation" },
-                { src: "/images/scaffold-workers-installing-3.jpg", tag: "On-structure build" },
-                { src: "/images/scaffold-safety-netting-8.jpg", tag: "Safety netting" },
-                { src: "/images/scaffold-large-project-5.jpg", tag: "Commercial frame" },
-                { src: "/images/scaffold-terrace-row-6.jpg", tag: "Terrace access" },
-                { src: "/images/scaffold-worker-detail-7.jpg", tag: "Detail & fittings" },
-                { src: "/images/scaffold-brick-house-2.jpg", tag: "Full wrap" },
-                { src: "/images/scaffold-commercial-building-4.jpg", tag: "Multi-storey" },
-              ].map((it, i) => (
-                <figure key={i} className="tile">
-                  <img src={it.src} alt={it.tag} loading="lazy" />
-                  <figcaption>
-                    <span className="tag">{it.tag}</span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+          <div className="bigGrid" aria-label="Project gallery">
+            {gallery.map((it, i) => (
+              <figure key={i} className="bigTile" style={{ "--bg": `url(${it.src})` }}>
+                <div className="bigTileOverlay" />
+                <figcaption>
+                  <span className="tag">{it.tag}</span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </section>
 
-        {/* Services over images */}
+        {/* Services (minimal text, still visual) */}
         <section id="services" className="section sectionAlt">
           <div className="container">
-            <div className="kicker">What we do</div>
-            <h2>Everything you need for safe access — without the drama.</h2>
-
-            <div className="serviceGrid">
+            <div className="kicker">Services</div>
+            <h2>What we cover.</h2>
+            <p className="sub">Simple list — because the photos do the heavy lifting.</p>
+            <div className="serviceStrip" aria-label="Services list">
               {[
-                { title: "Domestic scaffolding", copy: "Roofing, chimneys, guttering, solar, painting & rendering. Fast installs, tidy removals." },
-                { title: "Commercial & industrial", copy: "Larger frames, multi-storey elevations, loading bays, edge protection and phased schedules." },
-                { title: "Temporary roofs", copy: "Keep projects moving in UK weather. Shrink-wrap and tin-hat solutions available." },
-                { title: "Safety netting & protection", copy: "Debris netting, fans, pedestrian gantries and proper site protection." },
-                { title: "Access towers & stair systems", copy: "Safe access routes for trades and residents where needed." },
-                { title: "Design, RAMS & inspections", copy: "Method statements, handover certificates and weekly inspections where required." },
-              ].map((s, i) => (
-                <div key={i} className="serviceCard">
-                  <div className="serviceTitle">{s.title}</div>
-                  <p className="serviceCopy">{s.copy}</p>
-                </div>
+                "Domestic scaffolding",
+                "Commercial scaffolding",
+                "Temporary roofs",
+                "Chimney scaffolds",
+                "Loading bays",
+                "Edge protection & netting",
+                "Stair towers",
+                "Designs • RAMS • inspections",
+              ].map((t, i) => (
+                <span key={i} className="chip">{t}</span>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Reviews */}
-        <section id="reviews" className="section">
-          <div className="container">
+        {/* Reviews ON TOP of a big background image */}
+        <section id="reviews" className="section reviewsBand">
+          <div className="reviewsBg" role="img" aria-label="Scaffolding worker" />
+          <div className="reviewsOverlay" />
+          <div className="container reviewsInner">
             <div className="sectionHead">
               <div>
                 <div className="kicker">Reviews</div>
-                <h2>Trusted locally — for reliability and tidy sites.</h2>
+                <h2>Trusted for reliability and tidy sites.</h2>
               </div>
-              <p className="sub">
-                We’re building long-term trust. Clear comms, safe builds, and we turn up when we say we will.
-              </p>
+              <p className="sub">Reviews shown for layout — swap with your real ones when you’re ready.</p>
             </div>
 
             <div className="reviewGrid">
               {[
-                { name: "Homeowner • Henfield", src: "Google", logo: <LogoGoogle />, rating: 5, text: "Quote was clear, turned up on time, and the scaffold was spotless. Roofer said it was one of the safest setups he’s worked on." },
-                { name: "Builder • Brighton", src: "Checkatrade", logo: <LogoCheckatrade />, rating: 5, text: "Good team. Worked around deliveries and kept access clear. Inspections done without chasing." },
+                { name: "Homeowner", src: "Google", logo: <LogoGoogle />, rating: 5, text: "Quote was clear, turned up on time, and the scaffold was spotless. Roofer said it was one of the safest setups he’s worked on." },
+                { name: "Builder", src: "Checkatrade", logo: <LogoCheckatrade />, rating: 5, text: "Good team. Worked around deliveries and kept access clear. Inspections done without chasing." },
                 { name: "Property Manager", src: "Trustpilot", logo: <LogoTrustpilot />, rating: 5, text: "Professional from start to finish — paperwork sorted, tidy install, and removed exactly when promised." },
               ].map((r, i) => (
                 <div key={i} className="reviewCard">
@@ -226,9 +271,7 @@ export default function Home() {
                       <strong>{r.name}</strong>
                       <span className="reviewSrc">{r.logo} <small>{r.src}</small></span>
                     </div>
-                    <div className="reviewStars">
-                      <StarRow count={r.rating} />
-                    </div>
+                    <div className="reviewStars"><StarRow count={r.rating} /></div>
                   </div>
                   <p className="reviewText">“{r.text}”</p>
                 </div>
@@ -245,7 +288,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Accreditations / credibility */}
+        {/* Credibility */}
         <section id="trust" className="section sectionAlt">
           <div className="container">
             <div className="kicker">Credibility</div>
@@ -254,7 +297,7 @@ export default function Home() {
             <div className="certGrid">
               {[
                 { title: "Public & employers’ liability", copy: "Insurance details available on request." },
-                { title: "CISRS-trained scaffolders", copy: "A widely recognised UK training standard for scaffolders." },
+                { title: "CISRS-trained scaffolders", copy: "Widely recognised UK training standard for scaffolders." },
                 { title: "TG20:21 compliant designs", copy: "Industry guidance for tube & fitting scaffolds." },
                 { title: "SG4:22 working at height", copy: "Current guidance for safe scaffolding operations." },
                 { title: "RAMS & handover", copy: "Risk assessments, method statements and handover paperwork where required." },
@@ -267,9 +310,7 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="note">
-              Accreditations and memberships vary by company. Ask us for our current certificates and we’ll send them over.
-            </div>
+            <div className="note">Ask us for current certificates and we’ll send them over.</div>
           </div>
         </section>
 
@@ -278,10 +319,8 @@ export default function Home() {
           <div className="container contactGrid">
             <div>
               <div className="kicker">Get a quote</div>
-              <h2>Tell us what you need — we’ll come back fast.</h2>
-              <p className="sub">
-                Share the postcode, property type, and what works are happening (roofing, chimney, render etc.). Photos help.
-              </p>
+              <h2>Send the postcode + a couple of photos — we’ll price it fast.</h2>
+              <p className="sub">Roofing? Render? Chimney? Tell us what trades need access and your preferred dates.</p>
 
               <div className="contactCards">
                 <a className="contactCard" href="tel:+447000000000">
@@ -309,9 +348,7 @@ export default function Home() {
                 <textarea placeholder="Tell us about the job (roofing, render, chimney, access needs, dates)…" rows={5} />
               </label>
               <button className="btn btnPrimary" type="submit">Send enquiry</button>
-              <p className="fineprint">
-                We’ll reply as quickly as possible. If it’s urgent, give us a call.
-              </p>
+              <p className="fineprint">We’ll reply as quickly as possible. If it’s urgent, give us a call.</p>
             </form>
           </div>
         </section>
